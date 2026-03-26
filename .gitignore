@@ -1,0 +1,54 @@
+# Build
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# MAUI / Mobile
+*.apk
+*.aab
+*.keystore
+
+# Android
+*.dex
+
+# iOS
+*.ipa
+
+# MacCatalyst
+*.app
+
+# Publish
+publish/
+wwwroot/
+
+# Local settings
+appsettings.Development.json
+
+# Secrets
+.env
+.env.*
+secrets.json
+
+# NuGet
+*.nupkg
+packages/
+
+# Temporary
+*.tmp
+*.temp

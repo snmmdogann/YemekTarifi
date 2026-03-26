@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YemekTarifi.TarifGuncellemeSayfasi"
+             Title="Tarifi Güncelle">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <!-- Geri Dön Butonu -->
+            <Button
+                x:Name="btnGeriDon"
+                Text="Geri Dön"
+                Clicked="GeriDon"
+                BackgroundColor="#BBBF4E"
+                TextColor="#4D5947"
+                CornerRadius="12"
+                Padding="10"
+                Margin="10"
+                HorizontalOptions="Start"/>
+
+            <!-- Giriş Alanları -->
+            <Label Text="Tarif Adı"  TextColor="#4D5947" />
+            <Entry x:Name="adEntry"  Placeholder="Tarif adı giriniz" BackgroundColor="#FFF5E1" TextColor="#4D5947"/>
+
+            <Label Text="Malzemeler" TextColor="#4D5947" />
+            <Editor x:Name="malzemelerEditor" Placeholder="Malzemeleri giriniz"
+                AutoSize="TextChanges" HeightRequest="100"
+                BackgroundColor="#FFF5E1" TextColor="#4D5947"/>
+
+            <Label Text="Yapılış" TextColor="#4D5947" />
+            <Editor x:Name="yapilisEditor" Placeholder="Yapılışı giriniz"
+                AutoSize="TextChanges" HeightRequest="100"
+                BackgroundColor="#FFF5E1" TextColor="#4D5947"/>
+
+            <Label Text="Pişirme Süresi" TextColor="#4D5947" />
+            <Entry x:Name="pisirmeSuresiEntry" Placeholder="Pişirme Süresi (dk)"
+               Keyboard="Numeric" BackgroundColor="#FFF5E1" TextColor="#4D5947"/>
+
+            <Label Text="Kategori Seç" TextColor="#4D5947" />
+            <Picker x:Name="kategoriPicker" Title="Kategori seçiniz"
+                BackgroundColor="#FFF5E1" TextColor="#4D5947"/>
+
+            <!-- Resim Alanı -->
+            <Label Text="Resim (güncel veya yeni)" TextColor="#4D5947" />
+            <Image x:Name="resimGoruntuleme"
+               HeightRequest="400"
+               WidthRequest="600"
+               Aspect="AspectFill"
+               Margin="0,10"
+               BackgroundColor="#8B8C69"/>
+
+            <Button Text="Resim Seç" 
+                Clicked="ResimSecButon_Clicked"
+                BackgroundColor="#A67063"
+                TextColor="White" />
+
+            <Button Text="Tarifi Güncelle" 
+                Clicked="GuncelleTarif_Clicked" 
+                BackgroundColor="#4D5947"
+                TextColor="White"/>
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

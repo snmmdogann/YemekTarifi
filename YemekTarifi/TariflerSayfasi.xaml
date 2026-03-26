@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YemekTarifi.TariflerSayfasi"
+             Title="TariflerSayfasi"
+             BackgroundColor="#F2D5C4">
+    
+    <ScrollView>
+
+        
+
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <Label x:Name="lblHazirlaMesaji"
+                    FontAttributes="Italic"
+                    FontSize="14"
+                    TextColor="Gray"
+                    Margin="0,10,0,0" />
+
+            <Button
+                x:Name="btnGeriDon"
+                Text="Geri Dön"
+                Clicked="GeriDon"
+                BackgroundColor="#D9CD25"
+                TextColor="Black"
+                CornerRadius="12"
+                Padding="10"
+                Margin="10"
+                HorizontalOptions="Start"/>
+
+            <HorizontalStackLayout x:Name="YildizGorselStack" Spacing="4" />
+
+            
+            <HorizontalStackLayout Spacing="300" Margin="0,10,0,10">
+
+                <VerticalStackLayout HorizontalOptions="StartAndExpand" WidthRequest="280" Spacing="8">
+
+                    <Label x:Name="lblTarifAdi" FontSize="28" FontAttributes="Bold" TextColor="#000000" />
+
+                    <Label Text="🍽 Malzemeler" FontSize="22" FontAttributes="Bold" TextColor="#000000" Margin="0,20,0,5" />
+                    <Label x:Name="lblMalzemeler" FontSize="18" TextColor="#000000" />
+
+                    <Label Text="🧑‍🍳 Yapılışı" FontSize="22" FontAttributes="Bold" TextColor="#000000" Margin="0,20,0,5" />
+                    <Label x:Name="lblYapilis" FontSize="18" TextColor="#000000" />
+
+                    <Label x:Name="lblEklenmeTarihi" FontSize="16" TextColor="#4D5947" />
+
+                    <Label x:Name="lblGuncellenmeTarihi" FontSize="16" TextColor="#4D5947" />
+
+                    <Label x:Name="lblEkleyenKullanici" FontSize="16" TextColor="#4D5947" />
+                    
+                    <Label Text="⏱ Pişirme Süresi" FontSize="20" FontAttributes="Bold" TextColor="#000000" Margin="0,10,0,5" />
+                    <Label x:Name="lblPisirmeSuresi" FontSize="16" TextColor="#4D5947" />
+
+                </VerticalStackLayout>
+
+                <Image x:Name="imgTarifResim"
+                   Aspect="AspectFill"
+                   HeightRequest="400"
+                   WidthRequest="500"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,10"
+                   BackgroundColor="#BBBF4E" />
+
+            </HorizontalStackLayout>
+           
+
+            <!-- Malzemeler -->
+
+
+            <CollectionView ItemsSource="{Binding MalzemelerListesi}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" Spacing="12">
+                            <Label Text="{Binding MalzemeAdi}" FontSize="16" TextColor="#000000" />
+                            <Label Text="{Binding Miktar}" FontSize="16" TextColor="#4D5947" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Puan ve Yorum Bilgisi -->
+            <Label Text="Puan" FontAttributes="Bold" FontSize="22" TextColor="#000000" />
+            <Label x:Name="lblPuanDeger" FontSize="36" FontAttributes="Bold" TextColor="#4D5947" />
+
+
+
+
+            <!-- Yorumlar -->
+            <Label Text="Yorumlar:" FontAttributes="Bold" FontSize="22" Margin="0,20,0,5" TextColor="#000000" />
+            <CollectionView x:Name="yorumlarCollectionView" ItemsSource="{Binding YorumlarListesi}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#4D5947" Margin="5" Padding="12" BackgroundColor="#BBBF4E" CornerRadius="8">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding KullaniciAdi}" FontAttributes="Bold" TextColor="#000000" FontSize="16" />
+                                <Label Text="{Binding Yorum}" TextColor="#000000" FontSize="16" />
+                                <Label Text="{Binding Deger}" FontAttributes="Italic" TextColor="#4D5947" FontSize="14" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label x:Name="lblPuanYorum" FontSize="18" TextColor="#4D5947" />
+
+            <!-- Yıldızlarla Puanlama -->
+            <HorizontalStackLayout Spacing="6" Margin="10,0,10,10">
+                <Image x:Name="star1" WidthRequest="48" HeightRequest="48" Source="bosyildiz.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Star1_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="star2" WidthRequest="48" HeightRequest="48" Source="bosyildiz.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Star2_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="star3" WidthRequest="48" HeightRequest="48" Source="bosyildiz.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Star3_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="star4" WidthRequest="48" HeightRequest="48" Source="bosyildiz.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Star4_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="star5" WidthRequest="48" HeightRequest="48" Source="bosyildiz.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Star5_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </HorizontalStackLayout>
+
+
+
+            <!-- Yorum Yazma -->
+            <Label Text="Yorum Yap" FontAttributes="Bold" FontSize="22" Margin="0,20,0,5" TextColor="#000000" />
+            <Editor x:Name="yorumEditor" Placeholder="Yorumunuzu buraya yazın..." AutoSize="TextChanges" HeightRequest="100"
+                    BackgroundColor="White" TextColor="#000000" />
+
+            <!-- Butonlar -->
+            <Button Text="Puan ve Yorumu Gönder"
+                    BackgroundColor="#4D5947"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    CornerRadius="10"
+                    Margin="0,10,0,0"
+                    Clicked="BtnPuanYorumGonder_Clicked"/>
+
+            <Button Text="Favorilere Ekle"
+                    BackgroundColor="#4D5947"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    CornerRadius="10"
+                    Margin="0,20,0,0"
+                    Clicked="FavoriEkleTiklandi"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YemekTarifi.TariflerimSayfasi"
+             Title="TariflerimSayfasi"
+             BackgroundColor="#F2D5C4">
+    <!-- Açık krem arka plan -->
+
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+
+            <Button
+x:Name="btnGeriDon"
+Text="Geri Dön"
+Clicked="GeriDon"
+BackgroundColor="#D9CD25"
+TextColor="Black"
+CornerRadius="12"
+Padding="10"
+Margin="10"
+HorizontalOptions="Start"/>
+
+            <!-- Yeni Tarif Ekle Butonu -->
+            <Button Text="Yeni Tarif Ekle"
+                    Clicked="EkleTarif_Clicked"
+                    BackgroundColor="#BBBF4E"  
+                TextColor="Black"
+                    CornerRadius="10"
+                    Margin="0,0,0,10"/>
+
+            <!-- Kullanıcının tariflerini listeleyen ListView -->
+            <ListView x:Name="TariflerListView"
+                      HasUnevenRows="True"
+                      ItemSelected="TariflerListView_ItemSelected"
+                      SeparatorVisibility="Default"
+                      Margin="0,10,0,0"
+                      BackgroundColor="#F2D5C4"
+                      >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="10" Margin="5" CornerRadius="10" BackgroundColor="#F9EBD7" HasShadow="True" BorderColor="#8B8C69">
+
+                                <StackLayout>
+
+                                    <Label Text="{Binding Ad}" 
+                                           FontSize="20" 
+                                           FontAttributes="Bold" 
+                                           TextColor="#4D5947"/>
+
+                                    <Image Source="{Binding ResimUrl}" HeightRequest="250"
+                                           WidthRequest="300" 
+                                           Aspect="AspectFill" Margin="0,5"/>
+
+                                    <Label Text="Pişirme Süresi:"
+                                           FontSize="14"
+                                           TextColor="#4D5947"
+                                           FontAttributes="Bold"
+                                           />
+                                    <Label Text="{Binding PisirmeSuresi}"
+                                           FontSize="16"
+                                           TextColor="#333333"
+                                           Margin="0,0,0,5"/>
+
+                                    <Label Text="Malzemeler" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold" 
+                                           TextColor="#4D5947" 
+                                           Margin="0,5,0,0" />
+                                    <Label Text="{Binding Malzemeler}" 
+                                           FontSize="14" 
+                                           TextColor="#555555" 
+                                           LineBreakMode="WordWrap" />
+
+                                    <Label Text="Yapılışı" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold" 
+                                           TextColor="#4D5947" 
+                                           Margin="0,5,0,0" />
+                                    <Label Text="{Binding Yapilis}" 
+                                           FontSize="14" 
+                                           TextColor="#555555" 
+                                           LineBreakMode="WordWrap" />
+
+                                    <Label Text="{Binding EklenmeTarihi, StringFormat='Eklenme Tarihi: {0:dd.MM.yyyy}'}"
+                                           FontSize="12"
+                                           TextColor="#8B8C69"
+                                           HorizontalOptions="End"
+                                           Margin="0,5,0,0"/>
+
+                                    <Label Text="{Binding GuncellenmeTarihi, StringFormat='Güncellenme Tarihi: {0:dd.MM.yyyy}'}"
+                                           FontSize="12"
+                                           TextColor="#8B8C69"
+                                           HorizontalOptions="End"
+                                           Margin="0,0,0,5"/>
+
+                                    <!-- Güncelle ve Sil Butonları -->
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="10" Margin="0,5,0,0">
+                                        <Button Text="Güncelle"
+                                                Clicked="OnGuncelleButtonClicked"
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="#BBBF4E"
+                                                TextColor="Black"
+                                                CornerRadius="10"
+                                                WidthRequest="90"/>
+
+                                        <Button Text="Sil"
+                                                Clicked="SilTarif_Clicked"
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="#A67063"
+                                                TextColor="White"
+                                                CornerRadius="10"
+                                                WidthRequest="90"/>
+                                    </StackLayout>
+
+                                    <!-- Yorumlar kısmı -->
+                                    <StackLayout Margin="0,10,0,0">
+                                        <Label Text="Yorumlar:" FontAttributes="Bold" FontSize="14" TextColor="#4D5947"/>
+                                        <CollectionView ItemsSource="{Binding Yorum}" HeightRequest="100" SelectionMode="None">
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout Padding="0,2">
+                                                        <Label Text="{Binding KullaniciAdi}" FontSize="13" FontAttributes="Bold" TextColor="#4D5947"/>
+                                                        <Label Text="{Binding Yorum}" FontSize="13" TextColor="#333" LineBreakMode="TailTruncation"/>
+                                                        <Label Text="{Binding Deger, StringFormat='Puan: {0} / 5'}" FontSize="12" TextColor="#8B8C69"/>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

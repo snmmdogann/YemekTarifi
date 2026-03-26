@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YemekTarifi.HaftalikPlanSayfasi"
+             Title="HaftalikPlanSayfasi"
+             BackgroundColor="#F2D5C4">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+
+            <Button
+                x:Name="btnGeriDon"
+                Text="Geri Dön"
+                Clicked="GeriDon"
+                BackgroundColor="#D9CD25"
+                TextColor="Black"
+                CornerRadius="12"
+                Padding="10"
+                Margin="10"
+                HorizontalOptions="Start"/>
+
+            <!-- Gün Seçimi -->
+            <Label Text="Gün Seçin:" 
+                   FontAttributes="Bold" 
+                   FontSize="18" 
+                   TextColor="#4D5947"/>
+
+            <Picker x:Name="GunPicker"
+                    ItemsSource="{Binding Gunler}"
+                    ItemDisplayBinding="{Binding Ad}"
+                    BackgroundColor="#BBBF4E"
+                    TextColor="#000000"
+                    FontAttributes="Bold"
+                    HeightRequest="40"/>
+
+            <!-- Öğün Seçimi -->
+            <Label Text="Öğün Seçin:" 
+                   FontAttributes="Bold" 
+                   FontSize="18" 
+                   TextColor="#4D5947"/>
+
+            <Picker x:Name="OgunPicker"
+                    ItemsSource="{Binding Ogunler}"
+                    ItemDisplayBinding="{Binding Ad}"
+                    BackgroundColor="#BBBF4E"
+                    TextColor="#000000"
+                    FontAttributes="Bold"
+                    HeightRequest="40"/>
+
+            <!-- Tarif Seçimi -->
+            <Label Text="Tarif Seçin:" 
+                   FontAttributes="Bold" 
+                   FontSize="18" 
+                   TextColor="#4D5947"/>
+
+            <Picker x:Name="TarifPicker"
+                    ItemsSource="{Binding Tarifler}"
+                    ItemDisplayBinding="{Binding Ad}"
+                    BackgroundColor="#BBBF4E"
+                    TextColor="#000000"
+                    FontAttributes="Bold"
+                    HeightRequest="40"/>
+
+            <!-- Ekle Butonu -->
+            <Button Text="Tarifi Plana Ekle"
+                    Clicked="TarifEkle_Clicked"
+                    BackgroundColor="#A67063"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    HeightRequest="50"/>
+
+            <!-- Plan Tablosu -->
+            <ScrollView HorizontalScrollBarVisibility="Always" VerticalScrollBarVisibility="Always" HeightRequest="400">
+                <Grid x:Name="PlanTabloGrid"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      ColumnSpacing="4"
+                      RowSpacing="4"
+                      BackgroundColor="#F2D5C4"
+                      Padding="10" />
+            </ScrollView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

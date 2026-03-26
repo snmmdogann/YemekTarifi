@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="YemekTarifi.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:YemekTarifi"
+    Shell.FlyoutBehavior="Disabled"
+    Title="YemekTarifi">
+
+    <ShellContent
+        Title="Giriş"
+       ContentTemplate="{DataTemplate local:KullaniciGirisSayfasi}"
+        Route="KullaniciGirisSayfasi" />
+
+    <ShellContent
+        Title="Kategoriler"
+        ContentTemplate="{DataTemplate local:KategoriAnaSayfa}"
+        Route="KategoriAnaSayfa" />
+
+    <ShellContent
+        Title="Tarifler"
+        ContentTemplate="{DataTemplate local:KategoriDetaySayfasi}"
+        Route="KategoriDetaySayfasi" />
+
+    <ShellContent
+        Title="Tarifler"
+        ContentTemplate="{DataTemplate local:TariflerSayfasi}"
+        Route="TariflerSayfasi" />
+
+    <ShellContent
+    Title="Tarifler"
+    ContentTemplate="{DataTemplate local:TarifGuncellemeSayfasi}"
+    Route="TarifGuncellemeSayfasi" />
+  
+
+    <ShellContent
+        Title="Şifre Değiştir"
+        ContentTemplate="{DataTemplate local:SifreDegistirSayfasi}"
+        Route="SifreDegistirSayfasi" />
+
+   
+
+    <ShellContent
+        Title="Favoriler"
+        ContentTemplate="{DataTemplate local:FavorilerSayfasi}"
+        Route="favoriler sayfası"
+/>
+    <ShellContent
+         Title="arifEkleme"
+         ContentTemplate="{DataTemplate local:TarifEklemeSayfasi}"
+         Route="TarifEklemeSayfasi" />
+
+    <ShellContent
+        Title="tarifEkleme"
+        ContentTemplate="{DataTemplate local:YorumlarimSayfasi}"
+        Route="YorumlarimSayfasi" />
+
+    <ShellContent
+        Title="Puan güncelleme"
+        ContentTemplate="{DataTemplate local:PuanGuncellemeSayfasi}"
+        Route="Puanlarım gncellem sayfası"
+        />
+
+
+
+
+    <ShellContent
+    Title=" HaftalikPlanSayfasi"
+    ContentTemplate="{DataTemplate local:HaftalikPlanSayfasi}"
+    Route=" HaftalikPlanSayfasi "
+    />
+
+
+</Shell>

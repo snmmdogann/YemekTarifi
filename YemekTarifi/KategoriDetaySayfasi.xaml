@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="YemekTarifi.KategoriDetaySayfasi"
+    Title="{Binding KategoriAd}"  
+    BackgroundColor="#F2D5C4">
+
+    <ScrollView>
+        <StackLayout Spacing="10" Padding="10">
+
+            <Button
+                x:Name="btnGeriDon"
+                Text="Geri Dön"
+                Clicked="GeriDon"
+                BackgroundColor="#D9CD25"
+                TextColor="Black"
+                CornerRadius="12"
+                Padding="10"
+                Margin="10"
+                HorizontalOptions="Start"/>
+
+            <!-- ÜST MENÜ -->
+            <CollectionView x:Name="MenuCollectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="MenuCollectionView_SelectionChanged"
+                            HeightRequest="50"
+                            ItemsLayout="HorizontalList"
+                            BackgroundColor="#ffe4e1"
+                            Margin="0,0,0,10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" HasShadow="False" BorderColor="#ff4c4c" CornerRadius="15" BackgroundColor="#ff9999" >
+                            <Label Text="{Binding}" 
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="Center" 
+                                   TextColor="White" 
+                                   FontAttributes="Bold"
+                                   FontSize="16"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- ARAMA ALANI -->
+            <SearchBar x:Name="yemekAramaBar"
+                       Placeholder="Tarif Ara..."
+                       SearchButtonPressed="YemekAramaBar_SearchButtonPressed"
+                       TextChanged="YemekAramaBar_TextChanged"
+                       Margin="0,10,0,0"
+                       BackgroundColor="#BBBF4E"
+                       TextColor="#4D5947"
+                       PlaceholderColor="#8B8C69"
+                       FontAttributes="Bold"
+                       FontSize="16" />
+
+            <!-- TARİF LİSTESİ -->
+            <CollectionView x:Name="yemekListView"
+                            SelectionMode="Single"
+                            SelectionChanged="TarifSecildi"
+                            Margin="0,10,0,0"
+                            HeightRequest="1000">
+                <!-- Gerekirse yükseklik verilebilir -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#C7B89D" 
+                               CornerRadius="12" 
+                               Margin="5" 
+                               Padding="15" 
+                               HasShadow="True"
+                               BackgroundColor="#EDE6DB">
+                            <Label Text="{Binding Ad}" 
+                                   FontSize="20" 
+                                   TextColor="#5B4636" 
+                                   FontAttributes="Bold"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

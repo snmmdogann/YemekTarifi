@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YemekTarifi.PuanGuncellemeSayfasi"
+             Title="PuanGuncellemeSayfasi"
+             BackgroundColor="#F2D5C4">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label Text="Yorumu Güncelle" 
+               FontSize="24" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center"
+               TextColor="Black" />
+
+        <Editor x:Name="YorumEditor" 
+                AutoSize="TextChanges" 
+                Placeholder="Yorumunuzu yazın..." 
+                BackgroundColor="White" 
+                TextColor="Black" />
+
+        <Label Text="Puan (1-5)" 
+               TextColor="Black" />
+
+        <Entry x:Name="PuanEntry" 
+               Keyboard="Numeric" 
+               Placeholder="Puan" 
+               BackgroundColor="White" 
+               TextColor="Black" />
+
+        <Button Text="Güncelle" 
+                Clicked="GuncelleButton_Clicked"
+                BackgroundColor="#D9CD25"
+                TextColor="Black"
+                CornerRadius="12"
+                Padding="10"
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+</ContentPage>

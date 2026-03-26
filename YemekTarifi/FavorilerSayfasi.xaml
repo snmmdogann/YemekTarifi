@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YemekTarifi.FavorilerSayfasi"
+             Title="FavorilerSayfasi"
+             BackgroundColor="#F2D5C4">
+
+    <StackLayout Padding="10" Spacing="15">
+
+        <!-- Geri Dön Butonu -->
+        <Button
+            x:Name="btnGeriDon"
+            Text="Geri Dön"
+            Clicked="GeriDon"
+            BackgroundColor="#BBBF4E"
+            TextColor="Black"
+            CornerRadius="12"
+            Padding="10"
+            Margin="0,10,0,0"
+            HorizontalOptions="Start"/>
+
+        <!-- Başlık Çerçeveli -->
+        <Frame BorderColor="#D9CD25"
+               BackgroundColor="#D9CD25"
+               CornerRadius="12"
+               Padding="10"
+               Margin="0,10,0,0">
+            <Label Text="Favori Tarifleriniz"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#4D5947"
+                   HorizontalOptions="Center"/>
+        </Frame>
+
+        <!-- 2 Sütunlu Grid Listesi -->
+        <CollectionView x:Name="FavorilerListView"
+                        ItemsLayout="VerticalGrid, 2"
+                        SelectionMode="None"
+                        Margin="0,10,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="#8B8C69"
+                           BackgroundColor="#F2D5C4"
+                           CornerRadius="12"
+                           Padding="10"
+                           Margin="8">
+
+                        <StackLayout Orientation="Vertical" Spacing="6">
+                            <Label Text="{Binding TarifAdi}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#4D5947"/>
+
+                            <Label Text="{Binding EklenmeTarihi, StringFormat='Eklenme Tarihi: {0:dd.MM.yyyy}'}"
+                                   FontSize="14"
+                                   TextColor="Gray"/>
+
+                            <Button Text="Favoriden Kaldır"
+                                    BackgroundColor="#A67063"
+                                    TextColor="White"
+                                    CornerRadius="10"
+                                    Padding="5"
+                                    Clicked="SilFavori_Clicked"
+                                    CommandParameter="{Binding .}" />
+                        </StackLayout>
+
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </StackLayout>
+</ContentPage>

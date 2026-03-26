@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="YemekTarifi.KullaniciGirisSayfasi"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             Title="Giriş Yap"
+             BackgroundColor="#F2D5C4">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Logo -->
+            <Frame
+                WidthRequest="150"
+                HeightRequest="150"
+                CornerRadius="75"
+                IsClippedToBounds="True"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0"
+                BackgroundColor="#4D5947"
+                HasShadow="True">
+                <Image Source="yemek_logo.jpg"
+                       Aspect="AspectFill"
+                       WidthRequest="150"
+                       HeightRequest="150" />
+            </Frame>
+
+            <!-- Giriş Formu -->
+            <StackLayout x:Name="girisLayout" Spacing="12">
+                <Label Text="Giriş Yap"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       TextColor="#4D5947"
+                       HorizontalOptions="Center" />
+
+                <Frame CornerRadius="10" Padding="0" HasShadow="False" BackgroundColor="#8B8C69">
+                    <Entry x:Name="kullaniciAdiEntry"
+                           Placeholder="Kullanıcı Adı"
+                           BackgroundColor="Transparent"
+                           TextColor="White"
+                           PlaceholderColor="White"
+                           HeightRequest="45" />
+                </Frame>
+
+                <HorizontalStackLayout VerticalOptions="Center" Spacing="5" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name="sifreEntry" 
+                           Placeholder="Şifre" 
+                           IsPassword="True" 
+                           HorizontalOptions="FillAndExpand"
+                           HeightRequest="45"
+                           WidthRequest="1020"
+                           BackgroundColor="Transparent"
+                           TextColor="White"
+                           PlaceholderColor="White"/>
+                    <Button x:Name="btnSifreGoster" 
+                            Text="👁" 
+                            WidthRequest="40"
+                            HeightRequest="45"
+                            HorizontalOptions="End"  
+                            Clicked="BtnSifreGoster_Clicked"/>
+                </HorizontalStackLayout>
+
+
+                <Button Text="Giriş Yap"
+                        Clicked="GirisYap_Clicked"
+                        BackgroundColor="#BBBF4E"
+                        TextColor="#4D5947"
+                        CornerRadius="20"
+                        FontAttributes="Bold"
+                        HeightRequest="50" />
+
+                <Label Text="Üye değil misiniz?"
+                       HorizontalOptions="Center"
+                       TextColor="#4D5947" />
+
+                <Button Text="Üye Ol"
+                        Clicked="UyeOlSekmesi_Clicked"
+                        BackgroundColor="#BBBF4E"
+                        TextColor="#4D5947"
+                        CornerRadius="20"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        HorizontalOptions="Center" />
+            </StackLayout>
+
+            <!-- Üye Ol Formu -->
+            <StackLayout x:Name="uyeOlLayout"
+                         IsVisible="False"
+                         Spacing="12"
+                         Margin="0,30,0,0">
+                <Label Text="Üye Ol"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       TextColor="#4D5947"
+                       HorizontalOptions="Center" />
+
+                <Frame CornerRadius="10" Padding="0" HasShadow="False" BackgroundColor="#8B8C69">
+                    <Entry x:Name="uyeKullaniciAdiEntry" Placeholder="Kullanıcı Adı" BackgroundColor="Transparent" TextColor="White" PlaceholderColor="White" />
+                </Frame>
+
+                <Frame CornerRadius="10" Padding="0" HasShadow="False" BackgroundColor="#8B8C69">
+                    <Entry x:Name="uyeSoyadiEntry" Placeholder="Soyadı" BackgroundColor="Transparent" TextColor="White" PlaceholderColor="White" />
+                </Frame>
+
+                <!-- Şifre -->
+                <HorizontalStackLayout VerticalOptions="Center" Spacing="5" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name="uyeSifreEntry" 
+                            Placeholder="Şifre" 
+                            IsPassword="True" 
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="45"
+                            WidthRequest="1020"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            PlaceholderColor="White"/>
+                    <Button x:Name="btnUyeSifreGoster" 
+                            Text="👁" 
+                            WidthRequest="40"
+                            HeightRequest="45"
+                            HorizontalOptions="End"  
+                            Clicked="BtnUyeSifreGoster_Clicked"/>
+                </HorizontalStackLayout>
+
+                <!-- Şifre Tekrar -->
+                <HorizontalStackLayout VerticalOptions="Center" Spacing="5" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name="uyeSifreTekrarEntry" 
+                            Placeholder="Şifre Tekrar" 
+                            IsPassword="True" 
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="45"
+                            WidthRequest="1020"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            PlaceholderColor="White"/>
+                    <Button x:Name="btnUyeSifreTekrarGoster" 
+                            Text="👁" 
+                            WidthRequest="40"
+                            HeightRequest="45"
+                            HorizontalOptions="End"  
+                            Clicked="BtnUyeSifreTekrarGoster_Clicked"/>
+                </HorizontalStackLayout>
+
+                <Frame CornerRadius="10" Padding="0" HasShadow="False" BackgroundColor="#8B8C69">
+                    <Entry x:Name="uyeEpostaEntry" Placeholder="E-posta" BackgroundColor="Transparent" TextColor="White" PlaceholderColor="White" />
+                </Frame>
+
+                <!-- Doğum Tarihi -->
+                <Label Text="Doğum Tarihi" TextColor="#4D5947"/>
+                <DatePicker x:Name="uyeDogumTarihiPicker"
+                            TextColor="White"
+                            BackgroundColor="#8B8C69"
+                            MaximumDate="{x:Static sys:DateTime.Today}" />
+
+                
+
+                <!--telefon numarası-->
+                <Entry x:Name="uyeTelefonEntry" 
+                        Placeholder="Telefon numaranızı girin" 
+                        Keyboard="Telephone" 
+                        TextChanged="uyeTelefonEntry_TextChanged" />
+
+                <!--kayıt tarihi-->
+                <Label Text="Kayıt Tarihi" TextColor="#4D5947"/>
+                <DatePicker x:Name="uyeKayitTarihiPicker"
+                            Date="{Binding KayitTarihi}"
+                            IsEnabled="False"
+                            TextColor="#4D5947"/>
+
+                <!-- Cinsiyet -->
+                <Label Text="Cinsiyet" TextColor="#4D5947" />
+
+                <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                    <RadioButton GroupName="Cinsiyet" x:Name="rbKadin" Content="Kadın" TextColor="#4D5947" CheckedChanged="Cinsiyet_CheckedChanged"/>
+                    <RadioButton GroupName="Cinsiyet" x:Name="rbErkek" Content="Erkek" TextColor="#4D5947" CheckedChanged="Cinsiyet_CheckedChanged"/>
+                    <RadioButton GroupName="Cinsiyet" x:Name="rbDiger" Content="Diğer" TextColor="#4D5947" CheckedChanged="Cinsiyet_CheckedChanged"/>
+                </HorizontalStackLayout>
+
+
+                <Button Text="Üye Ol"
+                        Clicked="UyeOl_Clicked"
+                        BackgroundColor="#BBBF4E"
+                        TextColor="#4D5947"
+                        CornerRadius="20"
+                        FontAttributes="Bold"
+                        HeightRequest="50" />
+
+                <Button Text="Giriş Sayfasına Dön"
+                        Clicked="GirisSekmesi_Clicked"
+                        BackgroundColor="#A67063"
+                        TextColor="White"
+                        CornerRadius="20"
+                        HeightRequest="40"
+                        HorizontalOptions="Center" />
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
